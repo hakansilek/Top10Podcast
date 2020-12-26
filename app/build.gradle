@@ -18,13 +18,15 @@ android {
     }
 
     buildTypes {
+        def BASEURL = '"https://rss.itunes.apple.com/"'
+
         debug{
-            buildConfigField("String", "BASE_URL", "https://rss.itunes.apple.com")
+            buildConfigField("String", "BASE_URL", BASEURL)
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            buildConfigField("String", "BASE_URL", "https://rss.itunes.apple.com")
+            buildConfigField("String", "BASE_URL", BASEURL)
         }
     }
     compileOptions {
