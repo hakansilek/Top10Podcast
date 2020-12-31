@@ -35,6 +35,8 @@ class MainAdapter(val podcasts: List<PodcastModel>): RecyclerView.Adapter<MainAd
             podcastName = itemView.findViewById(R.id.podcast_name_tv)
             artistName = itemView.findViewById(R.id.artist_name_tv)
             releaseDate = itemView.findViewById(R.id.release_date_tv)
+
+            podcast_iv.clipToOutline = true
         }
 
       fun bind(podcast: PodcastModel){
