@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sileksoftware.top10podcats.R
 import com.sileksoftware.top10podcats.databinding.MainFragmentBinding
 import com.sileksoftware.top10podcats.model.main.PodcastModel
 
@@ -73,11 +74,11 @@ class MainFragment : Fragment() {
 
     private fun showAlert(message: String){
         val alertDialog = AlertDialog.Builder(context)
-        alertDialog.setTitle("Error")
+        alertDialog.setTitle(R.string.x1)
         alertDialog.setMessage(message)
         alertDialog.setCancelable(false)
 
-        alertDialog.setPositiveButton("OK"){dialog, which ->
+        alertDialog.setPositiveButton(R.string.x2){dialog, which ->
             dialog.dismiss()
         }
         alertDialog.show()

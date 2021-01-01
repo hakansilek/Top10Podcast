@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Top10Podcast</string>
+    <string name="x1">Error</string>
+    <string name="x2">OK</string>
 </resources>
