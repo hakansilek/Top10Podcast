@@ -6,11 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sileksoftware.top10podcats.R
+import com.sileksoftware.top10podcats.databinding.MainFragmentBinding
 import com.sileksoftware.top10podcats.model.main.PodcastModel
 
 class MainFragment : Fragment() {
@@ -19,31 +18,48 @@ class MainFragment : Fragment() {
         fun newInstance() = MainFragment()
     }
 
-    private lateinit var podcastListRecyclerView: RecyclerView
+    private var _mainFragmentBinding: MainFragmentBinding? = null
+    private val mainFragmentBinding get() = _mainFragmentBinding!!
+
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
-        val v = inflater.inflate(R.layout.main_fragment, container, false)
-        podcastListRecyclerView = v.findViewById(R.id.podcastList)
-        podcastListRecyclerView.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL,false)
+        _mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false)
 
-        return v
+        return mainFragmentBinding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mainFragmentBinding.podcastList.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _mainFragmentBinding = null
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-
         getData()
+
     }
 
     private fun getData(){
-        val podcastObserve = Observer<List<PodcastModel>>{
-            podcastListRecyclerView.adapter = MainAdapter(it)
+        val progressViewObserver = Observer<Boolean> {
+            if(it)
+                mainFragmentBinding.progressBar.visibility = View.VISIBLE
+            else
+                mainFragmentBinding.progressBar.visibility = View.INVISIBLE
+        }
+        val podcastObserver = Observer<List<PodcastModel>>{
+            mainFragmentBinding.podcastList.adapter = MainAdapter(it)
         }
 
-        viewModel.podcastList.observe(this,podcastObserve)
+        viewModel.podcastList.observe(this,podcastObserver)
+        viewModel.progressView.observe(this, progressViewObserver)
 
         viewModel.getTop10Podcast()
     }

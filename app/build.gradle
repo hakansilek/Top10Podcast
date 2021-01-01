@@ -7,6 +7,9 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
 
+    buildFeatures {
+        viewBinding true
+    }
     defaultConfig {
         applicationId "com.sileksoftware.top10podcats"
         minSdkVersion 23
