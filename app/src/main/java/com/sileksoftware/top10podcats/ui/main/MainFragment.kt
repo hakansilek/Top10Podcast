@@ -1,5 +1,6 @@
 package com.sileksoftware.top10podcats.ui.main
 
+import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -56,12 +57,30 @@ class MainFragment : Fragment() {
         }
         val podcastObserver = Observer<List<PodcastModel>>{
             mainFragmentBinding.podcastList.adapter = MainAdapter(it)
+
+        }
+
+        val failureObserver = Observer<String> {
+            showAlert(it)
         }
 
         viewModel.podcastList.observe(this,podcastObserver)
         viewModel.progressView.observe(this, progressViewObserver)
+        viewModel.failure.observe(this, failureObserver)
 
         viewModel.getTop10Podcast()
+    }
+
+    private fun showAlert(message: String){
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle("Error")
+        alertDialog.setMessage(message)
+        alertDialog.setCancelable(false)
+
+        alertDialog.setPositiveButton("OK"){dialog, which ->
+            dialog.dismiss()
+        }
+        alertDialog.show()
     }
 
 }

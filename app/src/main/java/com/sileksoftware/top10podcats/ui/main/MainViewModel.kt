@@ -13,6 +13,7 @@ import retrofit2.Response
 class MainViewModel : ViewModel() {
     val podcastList = MutableLiveData<List<PodcastModel>>()
     val progressView = MutableLiveData<Boolean>()
+    val failure = MutableLiveData<String>()
     private val podcastService = APIClient.createService(PodcastService::class.java)
 
     fun getTop10Podcast(){
@@ -22,11 +23,14 @@ class MainViewModel : ViewModel() {
                 progressView.value = false
                 if (response.isSuccessful){
                     podcastList.value = response.body()?.feed?.results
+                }else{
+                    failure.value = response.message()
                 }
             }
 
             override fun onFailure(call: Call<FeedModel>, t: Throwable) {
                 progressView.value = false
+                failure.value = t.message
             }
         })
     }
