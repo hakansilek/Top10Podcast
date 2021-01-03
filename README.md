@@ -9,7 +9,7 @@
 - [x] Fragment
 - [x] View Binding
 
-### Screenshots
+### Screenshot
 <div>
-<img src="./ReadmeResources/1.png" width="40%" >
+<img src="./ReadmeResources/1.png" width="25%" >
 </div>
