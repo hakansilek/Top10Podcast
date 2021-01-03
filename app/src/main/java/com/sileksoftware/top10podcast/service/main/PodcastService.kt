@@ -1,6 +1,6 @@
-package com.sileksoftware.top10podcats.service.main
+package com.sileksoftware.top10podcast.service.main
 
-import com.sileksoftware.top10podcats.model.main.FeedModel
+import com.sileksoftware.top10podcast.model.main.FeedModel
 import retrofit2.Call
 import retrofit2.http.GET
 

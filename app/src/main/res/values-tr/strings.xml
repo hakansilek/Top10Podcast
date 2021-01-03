@@ -3,4 +3,6 @@
     <string name="app_name">Top10Podcast</string>
     <string name="x1">Hata</string>
     <string name="x2">Tamam</string>
+    <string name="x3">BEĞENDİN</string>
+    <string name="x4">BEĞENMEDİN</string>
 </resources>

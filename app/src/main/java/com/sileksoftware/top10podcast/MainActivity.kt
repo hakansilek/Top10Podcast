@@ -1,8 +1,8 @@
-package com.sileksoftware.top10podcats
+package com.sileksoftware.top10podcast
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.sileksoftware.top10podcats.ui.main.MainFragment
+import com.sileksoftware.top10podcast.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

@@ -1,4 +1,4 @@
-package com.sileksoftware.top10podcats.model.main
+package com.sileksoftware.top10podcast.model.main
 
 import com.google.gson.annotations.SerializedName
 

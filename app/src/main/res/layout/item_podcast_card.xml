@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/padcast_cv"
+    android:id="@+id/podcast_cv"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="5dp"
@@ -25,7 +24,7 @@
                 android:layout_height="100dp"
                 android:layout_margin="5dp"
                 android:background="@drawable/rounded_image_view"
-                android:contentDescription="podcast image" />
+                android:contentDescription="podcast cover" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,22 +37,19 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="TextView"
                     android:textSize="24sp" />
 
                 <TextView
                     android:id="@+id/artist_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1" />
 
                 <TextView
                     android:id="@+id/release_date_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="TextView" />
+                    android:layout_weight="1"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -63,21 +59,25 @@
             android:layout_margin="5dp"
             android:orientation="horizontal">
 
-            <Button
+            <ImageButton
                 android:id="@+id/like_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp"
+                android:layout_marginEnd="5dp"
                 android:layout_weight="1"
-                android:text="Like" />
+                android:backgroundTint="@color/purple_700"
+                android:src="@drawable/ic_like"
+                android:contentDescription="@string/x3" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/dislike_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:layout_weight="1"
-                android:text="Dislike" />
+                android:backgroundTint="@color/purple_700"
+                android:src="@drawable/ic_dislike"
+                android:contentDescription="@string/x4" />
         </LinearLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

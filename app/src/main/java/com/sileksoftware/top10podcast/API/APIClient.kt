@@ -1,6 +1,6 @@
-package com.sileksoftware.top10podcats.API
+package com.sileksoftware.top10podcast.API
 
-import com.sileksoftware.top10podcats.BuildConfig
+import com.sileksoftware.top10podcast.BuildConfig
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

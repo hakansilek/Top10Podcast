@@ -1,11 +1,11 @@
-package com.sileksoftware.top10podcats.ui.main
+package com.sileksoftware.top10podcast.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.sileksoftware.top10podcats.API.APIClient
-import com.sileksoftware.top10podcats.model.main.FeedModel
-import com.sileksoftware.top10podcats.model.main.PodcastModel
-import com.sileksoftware.top10podcats.service.main.PodcastService
+import com.sileksoftware.top10podcast.API.APIClient
+import com.sileksoftware.top10podcast.model.main.FeedModel
+import com.sileksoftware.top10podcast.model.main.PodcastModel
+import com.sileksoftware.top10podcast.service.main.PodcastService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

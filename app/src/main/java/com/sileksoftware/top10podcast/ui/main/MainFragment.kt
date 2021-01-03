@@ -1,4 +1,4 @@
-package com.sileksoftware.top10podcats.ui.main
+package com.sileksoftware.top10podcast.ui.main
 
 import android.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
@@ -10,11 +10,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.sileksoftware.top10podcats.R
-import com.sileksoftware.top10podcats.databinding.MainFragmentBinding
-import com.sileksoftware.top10podcats.model.main.PodcastModel
+import com.google.android.material.snackbar.Snackbar
+import com.sileksoftware.top10podcast.R
+import com.sileksoftware.top10podcast.databinding.MainFragmentBinding
+import com.sileksoftware.top10podcast.model.main.PodcastModel
 
-class MainFragment : Fragment() {
+class MainFragment : Fragment(), ItemOnClickListener {
 
     companion object {
         fun newInstance() = MainFragment()
@@ -23,18 +24,17 @@ class MainFragment : Fragment() {
     private var _mainFragmentBinding: MainFragmentBinding? = null
     private val mainFragmentBinding get() = _mainFragmentBinding!!
 
+    private val adapter = MainAdapter()
+
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View {
         _mainFragmentBinding = MainFragmentBinding.inflate(inflater, container, false)
-
-        return mainFragmentBinding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        adapter._itemClickListener = this
         mainFragmentBinding.podcastList.layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+        mainFragmentBinding.podcastList.adapter = adapter
+        return mainFragmentBinding.root
     }
 
     override fun onDestroyView() {
@@ -57,8 +57,7 @@ class MainFragment : Fragment() {
                 mainFragmentBinding.progressBar.visibility = View.INVISIBLE
         }
         val podcastObserver = Observer<List<PodcastModel>>{
-            mainFragmentBinding.podcastList.adapter = MainAdapter(it)
-
+            adapter.updatePodcastList(it)
         }
 
         val failureObserver = Observer<String> {
@@ -78,10 +77,20 @@ class MainFragment : Fragment() {
         alertDialog.setMessage(message)
         alertDialog.setCancelable(false)
 
-        alertDialog.setPositiveButton(R.string.x2){dialog, which ->
+        alertDialog.setPositiveButton(R.string.x2){ dialog, _ ->
             dialog.dismiss()
         }
         alertDialog.show()
+    }
+
+    override fun onItemClickListener(isLike: Boolean) {
+        var message = ""
+        message = if (isLike) getString(R.string.x3) else getString(R.string.x4)
+
+        view?.let {
+            val snackBar = Snackbar.make(it,message,Snackbar.LENGTH_LONG)
+            snackBar.show()
+        }
     }
 
 }

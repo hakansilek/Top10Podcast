@@ -1,4 +1,4 @@
-package com.sileksoftware.top10podcats
+package com.sileksoftware.top10podcast
 
 import org.junit.Test
 

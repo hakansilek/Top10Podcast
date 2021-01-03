@@ -1,4 +1,4 @@
-package com.sileksoftware.top10podcats
+package com.sileksoftware.top10podcast
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.sileksoftware.top10podcats", appContext.packageName)
+        assertEquals("com.sileksoftware.top10podcast", appContext.packageName)
     }
 }
