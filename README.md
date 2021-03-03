@@ -1,9 +1,9 @@
 # Top10Poscast
 
-###API
+### API
 [Apple iTunes API](https://rss.itunes.apple.com/en-us)
 
-###Android Jetpack
+### Android Jetpack
 - [x] ViewModel
 - [x] LiveData
 - [x] Fragment
